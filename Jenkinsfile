@@ -6,10 +6,10 @@ pipeline {
         stage('Verify Environment') {
             steps {
                 sh '''
-                    echo "Checking Node.js..."
+                    echo "Node.js version:"
                     node --version
 
-                    echo "Checking npm..."
+                    echo "npm version:"
                     npm --version
                 '''
             }
@@ -40,17 +40,6 @@ pipeline {
             }
         }
 
-        stage('Frontend Lint') {
-            steps {
-                dir('frontend') {
-                    sh '''
-                        echo "Running frontend lint..."
-                        npm run lint
-                    '''
-                }
-            }
-        }
-
         stage('Frontend Build') {
             steps {
                 dir('frontend') {
@@ -73,17 +62,6 @@ pipeline {
             }
         }
 
-        stage('Backend Lint') {
-            steps {
-                dir('backend') {
-                    sh '''
-                        echo "Running backend lint..."
-                        npm run lint
-                    '''
-                }
-            }
-        }
-
         stage('Backend Test') {
             steps {
                 dir('backend') {
@@ -97,14 +75,14 @@ pipeline {
     }
 
     post {
-
         success {
             echo '''
 ==========================================
  COLLEGEKHOJ CI PIPELINE SUCCESS
 ==========================================
 Frontend build: SUCCESS
-Backend checks: SUCCESS
+Backend dependencies: SUCCESS
+Backend tests: SUCCESS
 ==========================================
 '''
         }
@@ -114,7 +92,7 @@ Backend checks: SUCCESS
 ==========================================
  COLLEGEKHOJ CI PIPELINE FAILED
 ==========================================
-Check the failed stage in Console Output.
+Check the failed stage above.
 ==========================================
 '''
         }

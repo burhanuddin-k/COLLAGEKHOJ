@@ -1,0 +1,44 @@
+.college-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.college-card-media {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--paper-dim);
+}
+.college-card-media img { width: 100%; height: 100%; object-fit: cover; }
+.college-card-media-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--indigo);
+  background: var(--paper-dim);
+}
+
+.college-card-body { flex: 1; min-width: 0; }
+
+.college-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.college-card-top h3 { font-size: 1.05rem; margin: 0; }
+
+.college-card-location { margin: 4px 0; font-size: 0.9rem; }
+.college-card-fee { font-weight: 600; color: var(--ink); margin-bottom: 10px; font-size: 0.92rem; }
+
+.college-card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .college-card { flex-direction: column; }
+  .college-card-media { width: 100%; height: 140px; }
+}

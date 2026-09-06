@@ -1,0 +1,165 @@
+/*
+  Design language: an Indian college-decision platform. The hero of the
+  product is trust in data (verification), not a generic SaaS look —
+  color and type choices below are made for that job specifically.
+
+  Palette:
+    --ink        #12172B  deep indigo-navy — headers, primary text on light
+    --paper      #FBFAF7  warm, cool-leaning off-white — page background
+    --indigo     #1E2A55  primary brand — nav, primary buttons
+    --marigold   #E29A33  accent — CTAs, highlights, "decide" energy
+    --verified   #2F7D5A  verification-green — trust signals only
+    --clay       #B5482B  used sparingly for "closing soon" urgency
+    --line       #E4E1D6  hairline borders on paper
+*/
+:root {
+  --ink: #12172b;
+  --paper: #fbfaf7;
+  --paper-dim: #f2f0e8;
+  --indigo: #1e2a55;
+  --indigo-deep: #141d3d;
+  --marigold: #e29a33;
+  --marigold-deep: #b97a1e;
+  --verified: #2f7d5a;
+  --verified-bg: #eaf4ee;
+  --clay: #b5482b;
+  --clay-bg: #fbeae5;
+  --line: #e4e1d6;
+  --line-deep: #cfcabb;
+  --text: #1b1f2a;
+  --text-muted: #5c6170;
+
+  --font-display: 'Spectral', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-card: 0 1px 2px rgba(18, 23, 43, 0.06), 0 6px 20px rgba(18, 23, 43, 0.05);
+  --container-max: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 0.4em;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+p { margin: 0 0 1em; color: var(--text); max-width: 68ch; }
+
+a { color: var(--indigo); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--marigold);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--indigo); color: white; }
+.btn-primary:hover { background: var(--indigo-deep); text-decoration: none; }
+.btn-accent { background: var(--marigold); color: var(--ink); }
+.btn-accent:hover { background: var(--marigold-deep); text-decoration: none; }
+.btn-ghost { background: transparent; color: var(--indigo); border: 1px solid var(--line-deep); }
+.btn-ghost:hover { background: var(--paper-dim); text-decoration: none; }
+.btn-sm { padding: 7px 14px; font-size: 0.875rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.badge-verified { background: var(--verified-bg); color: var(--verified); }
+.badge-needs-verification { background: var(--paper-dim); color: var(--text-muted); }
+.badge-reported, .badge-closing { background: var(--clay-bg); color: var(--clay); }
+.badge-demo { background: #fdf3d8; color: #8a6316; }
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius-sm);
+  background: white;
+  color: var(--text);
+}
+.input:focus { border-color: var(--indigo); }
+
+label { font-size: 0.875rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 6px; }
+
+.form-row { margin-bottom: 16px; }
+
+.text-muted { color: var(--text-muted); }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--paper-dim) 25%, #e9e6da 37%, var(--paper-dim) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+}
+
+/* Shared data table (used across college detail tabs + admin panel) */
+.table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; background: white; }
+.data-table th, .data-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+.data-table th { color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; }

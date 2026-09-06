@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node20'
+    }
+
     environment {
         APP_NAME = 'collegekhoj'
         BACKEND_IMAGE = 'collegekhoj-backend'
@@ -17,15 +21,27 @@ pipeline {
 
         stage('Verify Project') {
             steps {
-                echo 'Verifying CollegeKhoj project structure...'
-
                 sh '''
+                    echo "Checking project structure..."
+
                     test -f frontend/package.json
                     test -f backend/package.json
                     test -f backend/Dockerfile
                     test -f database/schema.sql
 
                     echo "Project structure verified successfully."
+                '''
+            }
+        }
+
+        stage('Check Node & NPM') {
+            steps {
+                sh '''
+                    echo "Node version:"
+                    node --version
+
+                    echo "NPM version:"
+                    npm --version
                 '''
             }
         }
@@ -45,7 +61,6 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh '''
-                        echo "Running frontend lint..."
                         npm run lint
                     '''
                 }
@@ -56,7 +71,6 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh '''
-                        echo "Building React/Vite frontend..."
                         npm run build
                     '''
                 }
@@ -78,7 +92,6 @@ pipeline {
             steps {
                 dir('backend') {
                     sh '''
-                        echo "Running backend lint..."
                         npm run lint
                     '''
                 }
@@ -89,7 +102,6 @@ pipeline {
             steps {
                 dir('backend') {
                     sh '''
-                        echo "Running backend tests..."
                         npm test -- --passWithNoTests
                     '''
                 }
@@ -100,8 +112,6 @@ pipeline {
             steps {
                 dir('backend') {
                     sh '''
-                        echo "Building CollegeKhoj backend Docker image..."
-
                         docker build \
                             -t ${BACKEND_IMAGE}:${BUILD_NUMBER} \
                             -t ${BACKEND_IMAGE}:latest \
@@ -114,7 +124,6 @@ pipeline {
         stage('Docker Image Check') {
             steps {
                 sh '''
-                    echo "Checking Docker image..."
                     docker images ${BACKEND_IMAGE}
                 '''
             }
@@ -122,16 +131,10 @@ pipeline {
     }
 
     post {
-
         success {
             echo '''
             ==========================================
-            CollegeKhoj CI Pipeline Successful!
-            ==========================================
-            Frontend build: SUCCESS
-            Backend lint:   SUCCESS
-            Backend tests:  SUCCESS
-            Docker build:   SUCCESS
+            COLLEGEKHOJ CI PIPELINE SUCCESSFUL
             ==========================================
             '''
         }
@@ -139,15 +142,12 @@ pipeline {
         failure {
             echo '''
             ==========================================
-            CollegeKhoj CI Pipeline FAILED
-            ==========================================
-            Check the Jenkins console output.
+            COLLEGEKHOJ CI PIPELINE FAILED
             ==========================================
             '''
         }
 
         always {
-            echo 'Cleaning Jenkins workspace...'
             cleanWs()
         }
     }

@@ -2,9 +2,7 @@
 
 CollegeKhoj is a college-discovery platform that helps students explore colleges, browse courses, compare options, and make better education decisions. The project brings the main information students need into one simple experience, including colleges, courses, admissions, and search.
 
-<p align="center">
-  <img src="assets/collegekhoj-live-site.png" alt="CollegeKhoj home page" width="100%" />
-</p>
+ <img width="1897" height="816" alt="Screenshot 2026-09-09 205842" src="https://github.com/user-attachments/assets/b07bd99e-5185-4af0-aa35-e37bf8de38cf" />
 
 ## What the project does
 
@@ -35,9 +33,8 @@ Backend (Node.js)
 MySQL Database
 ```
 
-<p align="center">
-  <img src="assets/project-structure.png" alt="CollegeKhoj repository structure" width="100%" />
-</p>
+<img width="1826" height="942" alt="Screenshot 2026-09-09 210500" src="https://github.com/user-attachments/assets/b90ee8d8-01e2-411e-a9cd-5bb49a7185e9" />
+
 
 The repository contains:
 
@@ -48,17 +45,15 @@ The repository contains:
 - `Docker-compose.yml` — configuration for running the services together
 - `Jenkinsfile` — CI/CD pipeline configuration
 
-<p align="center">
-  <img src="assets/github-repository.png" alt="CollegeKhoj GitHub repository" width="100%" />
-</p>
+<img width="1885" height="857" alt="Screenshot 2026-09-09 205954" src="https://github.com/user-attachments/assets/1aaca4c8-d8c4-4641-8162-cc6d84ff169f" />
+
 
 ## Containerized deployment
 
 The frontend, backend, and MySQL database run as separate Docker containers. Docker Compose coordinates the services so they can run together as one application environment.
 
-<p align="center">
-  <img src="assets/docker-containers.png" alt="Running CollegeKhoj frontend, backend, and MySQL Docker containers" width="100%" />
-</p>
+<img width="1907" height="867" alt="Screenshot 2026-09-09 205654" src="https://github.com/user-attachments/assets/459aa9fa-92a6-45bf-b505-44aa5ccc192f" />
+
 
 This approach makes the project easier to run consistently across environments and provides hands-on practice with containerized application delivery.
 
@@ -66,21 +61,16 @@ This approach makes the project easier to run consistently across environments a
 
 Jenkins is used to automate the build and delivery workflow for CollegeKhoj. The pipeline helps make deployments repeatable instead of relying on manual steps.
 
-<p align="center">
-  <img src="assets/jenkins-pipeline.png" alt="Jenkins dashboard with the CollegeKhoj pipeline" width="100%" />
-</p>
+<img width="1916" height="827" alt="Screenshot 2026-09-06 173940" src="https://github.com/user-attachments/assets/d14c65de-0a8d-4d03-b6be-74c976438dff" />
+
 
 ## AWS infrastructure
 
 The project is deployed using AWS infrastructure. The environment includes an EC2 instance for running the application and a VPC for the networking layer.
 
-<p align="center">
-  <img src="assets/aws-ec2-instance.png" alt="AWS EC2 instance used for CollegeKhoj deployment" width="100%" />
-</p>
+<img width="1897" height="816" alt="Screenshot 2026-09-09 205842" src="https://github.com/user-attachments/assets/2d8fe75c-fc5e-4d9b-af39-03dc6eed0dea" />
 
-<p align="center">
-  <img src="assets/aws-vpc-resource-map.png" alt="AWS VPC resource map used for CollegeKhoj" width="100%" />
-</p>
+<img width="1910" height="856" alt="Screenshot 2026-09-06 162822" src="https://github.com/user-attachments/assets/a662041f-41d8-4b55-872f-a6feaf5a9ac7" />
 
 ## Technologies used
 

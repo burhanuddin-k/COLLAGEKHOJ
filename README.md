@@ -2,7 +2,8 @@
 
 CollegeKhoj is a college-discovery platform that helps students explore colleges, browse courses, compare options, and make better education decisions. The project brings the main information students need into one simple experience, including colleges, courses, admissions, and search.
 
- <img width="1897" height="816" alt="Screenshot 2026-09-09 205842" src="https://github.com/user-attachments/assets/b07bd99e-5185-4af0-aa35-e37bf8de38cf" />
+ <img width="1895" height="965" alt="Screenshot 2026-09-06 180427" src="https://github.com/user-attachments/assets/709a9f52-b992-4517-862c-29bf294f0dcf" />
+
 
 ## What the project does
 
